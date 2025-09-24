@@ -28,7 +28,6 @@ connectDB()
 const users = require("./routes/users");
 const auth = require("./routes/auth");
 const posts = require("./routes/posts")
-const xssSanitize = require('xss-sanitize')
 
 app.use('/users', users)
 app.use('/auth', auth)
