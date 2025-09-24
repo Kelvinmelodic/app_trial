@@ -17,7 +17,7 @@ app.use(cors())
 app.use(helmet())
 
 // prevent xss attact
-app.use(xss-sanitize())
+app.use(xssSanitize())
 
 // prevent hpp attacks
 app.use(hpp())
