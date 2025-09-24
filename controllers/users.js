@@ -3,10 +3,11 @@ const bcrypt = require('bcryptjs')
 
 const getUsers = async (req, res) => {
     try{
-    const users = await User.find()
+    const users = await User.find({}).populate('posts')
     res.json({users})
     } catch(error) {
         res.status(500).json({message: "Internal Server error"})
+        console.log(error)
     }
     
 };
@@ -59,7 +60,11 @@ const updateUser = async (req, res) =>{
     user = await User.findByIdAndUpdate(
     req.params.id,
     {
-        $set: req.body,
+        $set: {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            phone: req.body.phone
+        },
     },
     { new: true }
    );

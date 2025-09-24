@@ -29,9 +29,13 @@ const userSchema = new mongoose.Schema({
         default: 'user',
         required: true
         
-    }
+    },
+    posts: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    }]
 });
 
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User

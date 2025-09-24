@@ -6,15 +6,18 @@ const app = express();
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use("/uploads", express.static("uploads"));
 
 
 connectDB()
 
 const users = require("./routes/users");
 const auth = require("./routes/auth");
+const posts = require("./routes/posts")
 
 app.use('/users', users)
 app.use('/auth', auth)
+app.use('/posts', posts)
 
 const port = 4199
 app.listen(port, () => {
