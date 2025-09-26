@@ -17,7 +17,7 @@ const createPost = async (req, res) => {
 
         const user = await User.findById(req.user.id)
         user.posts.unshift(post.id)
-        await user.save
+        await user.save()
 
         res.status(201).json({ message: "Post created", data: post})
     } catch (error) {
